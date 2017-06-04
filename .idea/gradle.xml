@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/JNA" />
             <option value="$PROJECT_DIR$/JNICollection" />
             <option value="$PROJECT_DIR$/JNILog" />
+            <option value="$PROJECT_DIR$/JNIMemoryRead" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
