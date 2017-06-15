@@ -1,4 +1,4 @@
-package com.ziv.jni.memory.read;
+package com.ziv.memory;
 
 import org.junit.Test;
 

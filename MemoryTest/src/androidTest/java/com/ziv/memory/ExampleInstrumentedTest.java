@@ -1,4 +1,4 @@
-package com.ziv.jni.memory.read;
+package com.ziv.memory;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.ziv.jni.memory.read.test", appContext.getPackageName());
+        assertEquals("com.ziv.memory.test", appContext.getPackageName());
     }
 }
