@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JNITest</string>
+    <string name="introduct">Android使用JNI的相关例子实现</string>
 </resources>
