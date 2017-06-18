@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button jniErrorBtn;
     private Button jniArrayBtn;
     private Button jniInnerClassBtn;
+    private Button jniCallBackBtn;
     private MemoryTestAPI memoryTestAPI;
     private HelloJni helloJni;
 
@@ -37,9 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         jniErrorBtn = (Button) findViewById(R.id.jni_error);
         jniArrayBtn = (Button) findViewById(R.id.jni_array);
         jniInnerClassBtn = (Button) findViewById(R.id.jni_inner_class);
+        jniCallBackBtn = (Button) findViewById(R.id.jni_callback);
         jniErrorBtn.setOnClickListener(this);
         jniArrayBtn.setOnClickListener(this);
         jniInnerClassBtn.setOnClickListener(this);
+        jniCallBackBtn.setOnClickListener(this);
     }
 
     private void initSDK() {
@@ -66,6 +69,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 HelloJni.Name name = helloJni.new Name();
                 name.setNewName();
                 Log.e(TAG, "New name is " + name.getNewName());
+                break;
+            case R.id.jni_callback:
+                helloJni.doCallBack();
+                break;
             default:
                 break;
         }

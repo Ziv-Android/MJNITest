@@ -71,3 +71,22 @@ JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_00024Name_setNewName
     env->SetObjectField(obj, nameFieldId, cName);
     env->DeleteLocalRef(cName);
 }
+
+/*
+ * Class:     com_ziv_jni_collection_HelloJni
+ * Method:    doCallBack
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_doCallBack
+        (JNIEnv *env, jobject obj){
+    jclass clazz = env->GetObjectClass(obj);
+    jmethodID callbackMethod = env->GetMethodID(clazz, "callback", "(Ljava/lang/String;)V");
+
+    if (callbackMethod == NULL){
+        LOGE("Get callback method id is failed.");
+    }
+
+    jstring native_string = env->NewStringUTF("I am native");
+    //回调该方法，并且传递参数值
+    env->CallVoidMethod(obj, callbackMethod, native_string);
+}

@@ -1,5 +1,7 @@
 package com.ziv.jni.collection;
 
+import android.util.Log;
+
 /**
  * JNI创建Java对象
  *
@@ -12,12 +14,8 @@ public class HelloJni {
     }
 
     public native String getAJNIString();
-    public native int[][] getTwoArray(int dimionX, int dimionY);
 
-//    public Name name;
-//    public HelloJni() {
-//        name = new Name();
-//    }
+    public native int[][] getTwoArray(int dimionX, int dimionY);
 
     public class Name {
         private String name = "Java";
@@ -27,4 +25,9 @@ public class HelloJni {
             return name;
         }
     }
+
+    public void callback(String fromNative){
+        Log.e("HelloJni", "Native call java method and return string is ###### " + fromNative);
+    }
+    public native void doCallBack();
 }

@@ -33,4 +33,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="JNI_Inner_Class"/>
+
+    <Button
+        android:id="@+id/jni_callback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JNI_callback"/>
 </LinearLayout>

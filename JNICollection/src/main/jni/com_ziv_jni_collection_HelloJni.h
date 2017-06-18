@@ -25,6 +25,14 @@ JNIEXPORT jstring JNICALL Java_com_ziv_jni_collection_HelloJni_getAJNIString
 JNIEXPORT jobjectArray JNICALL Java_com_ziv_jni_collection_HelloJni_getTwoArray
   (JNIEnv *, jobject, jint, jint);
 
+/*
+ * Class:     com_ziv_jni_collection_HelloJni
+ * Method:    doCallBack
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_doCallBack
+  (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif
