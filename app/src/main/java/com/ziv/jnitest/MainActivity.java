@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = MainActivity.class.getSimpleName();
     private TextView jniText;
     private Button jniErrorBtn;
+    private Button jniArrayBtn;
+    private Button jniInnerClassBtn;
     private MemoryTestAPI memoryTestAPI;
     private HelloJni helloJni;
 
@@ -33,7 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         jniText = (TextView) findViewById(R.id.jni_text);
         jniText.setOnClickListener(this);
         jniErrorBtn = (Button) findViewById(R.id.jni_error);
+        jniArrayBtn = (Button) findViewById(R.id.jni_array);
+        jniInnerClassBtn = (Button) findViewById(R.id.jni_inner_class);
         jniErrorBtn.setOnClickListener(this);
+        jniArrayBtn.setOnClickListener(this);
+        jniInnerClassBtn.setOnClickListener(this);
     }
 
     private void initSDK() {
@@ -48,9 +54,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.jni_text:
                 jniText.setText(helloJni.getAJNIString());
                 break;
+            case R.id.jni_array:
+                int[][] twoArray = helloJni.getTwoArray(3, 4);
+                Log.e(TAG, "length = " + twoArray.length);
+                Log.e(TAG, "twoArray[2][2] = " + twoArray[2][2]);
+                break;
             case R.id.jni_error:
                 memoryTestAPI.valgrindTest();
                 break;
+            case R.id.jni_inner_class:
+                HelloJni.Name name = helloJni.new Name();
+                name.setNewName();
+                Log.e(TAG, "New name is " + name.getNewName());
             default:
                 break;
         }

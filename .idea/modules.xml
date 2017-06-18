@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/JNILog/JNILog.iml" filepath="$PROJECT_DIR$/JNILog/JNILog.iml" />
       <module fileurl="file://$PROJECT_DIR$/JNITest.iml" filepath="$PROJECT_DIR$/JNITest.iml" />
       <module fileurl="file://$PROJECT_DIR$/MemoryTest/MemoryTest.iml" filepath="$PROJECT_DIR$/MemoryTest/MemoryTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MemoryTest/MemoryTest.iml" filepath="$PROJECT_DIR$/MemoryTest/MemoryTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

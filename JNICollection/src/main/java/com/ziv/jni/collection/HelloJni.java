@@ -12,5 +12,19 @@ public class HelloJni {
     }
 
     public native String getAJNIString();
-    public native int[][] getTwoArray(int dimon);
+    public native int[][] getTwoArray(int dimionX, int dimionY);
+
+//    public Name name;
+//    public HelloJni() {
+//        name = new Name();
+//    }
+
+    public class Name {
+        private String name = "Java";
+
+        public native void setNewName();
+        public String getNewName(){
+            return name;
+        }
+    }
 }

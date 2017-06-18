@@ -21,4 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="JNI_Error"/>
+
+    <Button
+        android:id="@+id/jni_array"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JNI_Array"/>
+
+    <Button
+        android:id="@+id/jni_inner_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JNI_Inner_Class"/>
 </LinearLayout>
