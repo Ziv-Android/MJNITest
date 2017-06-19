@@ -31,5 +31,7 @@ public class HelloJni {
     }
     public native void doCallBack();
 
-    public native void getStudentInfo();
+    public native Student getStudentInfo();
+
+    public native void putHumanToNative();
 }

@@ -17,7 +17,7 @@ JNIEXPORT jstring JNICALL Java_com_ziv_jni_collection_HelloJni_getAJNIString
  * Signature: (I)[[I
  */
 JNIEXPORT jobjectArray JNICALL Java_com_ziv_jni_collection_HelloJni_getTwoArray
-        (JNIEnv *env, jobject obj, jint dimionX, jint dimionY){
+        (JNIEnv *env, jobject obj, jint dimionX, jint dimionY) {
     // 获取一维数组的类引用，即jintArray类型
     jclass intArrayClass = env->FindClass("[I");
     // 构造一个指向jintArray类一维数组的对象数组，该对象数组的初始大小为dimion
@@ -46,21 +46,21 @@ JNIEXPORT jobjectArray JNICALL Java_com_ziv_jni_collection_HelloJni_getTwoArray
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_00024Name_setNewName
-        (JNIEnv *env, jobject obj){
+        (JNIEnv *env, jobject obj) {
     // obj代表了执行此JNI操作的类实例引用
     jfieldID nameFieldId;
     // 获取Java层该对象实例的类引用，HelloJni内部类Name
     jclass clazz = env->GetObjectClass(obj);
     // 获取属性句柄
     nameFieldId = env->GetFieldID(clazz, "name", "Ljava/lang/String;");
-    if (nameFieldId == NULL){
+    if (nameFieldId == NULL) {
         LOGE("Get name field id is failed.");
     }
     // 获取该属性的值
     jstring javaNameStr = (jstring) env->GetObjectField(obj, nameFieldId);
     // 转换为char*类型
-    const char * c_javaName = env->GetStringUTFChars(javaNameStr, 0);
-    LOGE("Name is %s",c_javaName);
+    const char *c_javaName = env->GetStringUTFChars(javaNameStr, 0);
+    LOGE("Name is %s", c_javaName);
     // 释放局部引用
     env->ReleaseStringUTFChars(javaNameStr, c_javaName);
 
@@ -78,11 +78,11 @@ JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_00024Name_setNewName
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_doCallBack
-        (JNIEnv *env, jobject obj){
+        (JNIEnv *env, jobject obj) {
     jclass clazz = env->GetObjectClass(obj);
     jmethodID callbackMethod = env->GetMethodID(clazz, "callback", "(Ljava/lang/String;)V");
 
-    if (callbackMethod == NULL){
+    if (callbackMethod == NULL) {
         LOGE("Get callback method id is failed.");
     }
 
@@ -94,9 +94,48 @@ JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_doCallBack
 /*
  * Class:     com_ziv_jni_collection_HelloJni
  * Method:    getStudentInfo
- * Signature: ()V
+ * Signature: ()Lcom/ziv/jni/collection/Student;
  */
-JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentInfo
-(JNIEnv *, jobject){
+#define STUDENT_CLASS "com/ziv/jni/collection/Student"
+#define INIT_WITH_DATA
+JNIEXPORT jobject JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentInfo
+        (JNIEnv *env, jobject obj) {
+    // 关于包描述符理论上, Lcom/ziv/jni/collection/Student; 与 com/ziv/jni/collection/Student 等价
+    // 但实测Nexus6 Android7.0不可用 Lcom/ziv/jni/collection/Student; ,crash信息如下
+    // JNI DETECTED ERROR IN APPLICATION: illegal class name
+    // (should be of the form 'package/Class', [Lpackage/Class;' or '[[B') in call to FindClass
 
+    // 获得Student类引用
+    jclass stucls = env->FindClass(STUDENT_CLASS);
+    if (stucls == NULL) {
+        LOGE("Find student class is failed.");
+    }
+
+    jstring str = env->NewStringUTF("Native");
+#ifdef INIT_WITH_DATA
+    jmethodID stu_data_init = env->GetMethodID(stucls, "<init>", "(ILjava/lang/String;)V");
+    if (stu_data_init == NULL) {
+        LOGE("Find student init function with data is failed.");
+    }
+
+    // 使用包含带参数的构造函数创建对象
+    jobject stu_obj = env->NewObject(stucls, stu_data_init, 11, str);
+#else
+    jmethodID stu_init = env->GetMethodID(stucls, "<init>", "()V");
+    if (stu_init == NULL) {
+        LOGE("Find student init function is failed.");
+    }
+    jobject stu_obj = env->NewObject(stucls, stu_init, NULL);
+    jfieldID field_age = env->GetFieldID(stucls, "age", "I");
+    if (field_age == NULL) {
+        LOGE("field age id get failed.");
+    }
+    jfieldID field_name = env->GetFieldID(stucls, "name", "Ljava/lang/String;");
+    if (field_name == NULL) {
+        LOGE("field name id get failed.");
+    }
+    env->SetIntField(stu_obj, field_age, 21);
+    env->SetObjectField(stu_obj, field_name, str);
+#endif
+    return stu_obj;
 }

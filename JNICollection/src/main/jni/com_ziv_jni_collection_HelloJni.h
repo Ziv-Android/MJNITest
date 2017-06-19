@@ -36,9 +36,9 @@ JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_doCallBack
 /*
  * Class:     com_ziv_jni_collection_HelloJni
  * Method:    getStudentInfo
- * Signature: ()V
+ * Signature: ()Lcom/ziv/jni/collection/Student;
  */
-JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentInfo
+JNIEXPORT jobject JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentInfo
   (JNIEnv *, jobject);
 
 #ifdef __cplusplus

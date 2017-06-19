@@ -11,10 +11,11 @@
         android:layout_height="wrap_content"
         android:text="@string/introduct" />
 
-    <TextView
+    <Button
         android:id="@+id/jni_text"
         android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        android:layout_height="wrap_content"
+        android:text="JNI_Text"/>
 
     <Button
         android:id="@+id/jni_error"
@@ -39,4 +40,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="JNI_callback"/>
+
+    <Button
+        android:id="@+id/jni_class_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JNI_class_info"/>
 </LinearLayout>

@@ -11,15 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ziv.jni.collection.HelloJni;
+import com.ziv.jni.collection.Student;
 import com.ziv.memory.MemoryTestAPI;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private TextView jniText;
+    private Button jniTextBtn;
     private Button jniErrorBtn;
     private Button jniArrayBtn;
     private Button jniInnerClassBtn;
     private Button jniCallBackBtn;
+    private Button jniClassInfoBtn;
     private MemoryTestAPI memoryTestAPI;
     private HelloJni helloJni;
 
@@ -33,16 +35,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        jniText = (TextView) findViewById(R.id.jni_text);
-        jniText.setOnClickListener(this);
+        jniTextBtn = (Button) findViewById(R.id.jni_text);
         jniErrorBtn = (Button) findViewById(R.id.jni_error);
         jniArrayBtn = (Button) findViewById(R.id.jni_array);
         jniInnerClassBtn = (Button) findViewById(R.id.jni_inner_class);
         jniCallBackBtn = (Button) findViewById(R.id.jni_callback);
+        jniClassInfoBtn = (Button) findViewById(R.id.jni_class_info);
+        jniTextBtn.setOnClickListener(this);
         jniErrorBtn.setOnClickListener(this);
         jniArrayBtn.setOnClickListener(this);
         jniInnerClassBtn.setOnClickListener(this);
         jniCallBackBtn.setOnClickListener(this);
+        jniClassInfoBtn.setOnClickListener(this);
     }
 
     private void initSDK() {
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
         switch (id) {
             case R.id.jni_text:
-                jniText.setText(helloJni.getAJNIString());
+                Toast.makeText(this, helloJni.getAJNIString(), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.jni_array:
                 int[][] twoArray = helloJni.getTwoArray(3, 4);
@@ -72,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.jni_callback:
                 helloJni.doCallBack();
+                break;
+            case R.id.jni_class_info:
+                Student studentInfo = helloJni.getStudentInfo();
+                Log.e(TAG, "Native student info is " + studentInfo.toString());
                 break;
             default:
                 break;
