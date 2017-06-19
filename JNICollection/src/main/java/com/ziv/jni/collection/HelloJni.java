@@ -30,4 +30,6 @@ public class HelloJni {
         Log.e("HelloJni", "Native call java method and return string is ###### " + fromNative);
     }
     public native void doCallBack();
+
+    public native void getStudentInfo();
 }

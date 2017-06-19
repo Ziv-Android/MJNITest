@@ -90,3 +90,13 @@ JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_doCallBack
     //回调该方法，并且传递参数值
     env->CallVoidMethod(obj, callbackMethod, native_string);
 }
+
+/*
+ * Class:     com_ziv_jni_collection_HelloJni
+ * Method:    getStudentInfo
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentInfo
+(JNIEnv *, jobject){
+
+}
