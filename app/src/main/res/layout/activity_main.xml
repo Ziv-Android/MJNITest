@@ -15,41 +15,47 @@
         android:id="@+id/jni_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JNI_Text"/>
+        android:text="JNI_Text" />
 
     <Button
         android:id="@+id/jni_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JNI_Error"/>
+        android:text="JNI_Error" />
 
     <Button
         android:id="@+id/jni_array"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JNI_Array"/>
+        android:text="JNI_Array" />
 
     <Button
         android:id="@+id/jni_inner_class"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JNI_Inner_Class"/>
+        android:text="JNI_Inner_Class" />
 
     <Button
         android:id="@+id/jni_callback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JNI_callback"/>
+        android:text="JNI_callback" />
 
     <Button
         android:id="@+id/jni_class_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JNI_class_info"/>
+        android:text="JNI_class_info" />
 
     <Button
         android:id="@+id/jni_put_class_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JNI_put_class_info_to_native"/>
+        android:text="JNI_put_class_info_to_native" />
+
+    <Button
+        android:id="@+id/jni_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JNI_list" />
 </LinearLayout>

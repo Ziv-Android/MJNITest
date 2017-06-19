@@ -2,6 +2,8 @@ package com.ziv.jni.collection;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * JNI创建Java对象
  *
@@ -34,4 +36,6 @@ public class HelloJni {
     public native Student getStudentInfo();
 
     public native void putHumanToNative(Human human);
+
+    public native ArrayList<Student> getStudentList();
 }

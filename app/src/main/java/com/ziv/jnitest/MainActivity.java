@@ -15,6 +15,8 @@ import com.ziv.jni.collection.Human;
 import com.ziv.jni.collection.Student;
 import com.ziv.memory.MemoryTestAPI;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Button jniTextBtn;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button jniCallBackBtn;
     private Button jniClassInfoBtn;
     private Button jniPutClassInfoToNativeBtn;
+    private Button jniListBtn;
     private MemoryTestAPI memoryTestAPI;
     private HelloJni helloJni;
 
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         jniCallBackBtn = (Button) findViewById(R.id.jni_callback);
         jniClassInfoBtn = (Button) findViewById(R.id.jni_class_info);
         jniPutClassInfoToNativeBtn = (Button) findViewById(R.id.jni_put_class_info);
+        jniListBtn = (Button) findViewById(R.id.jni_list);
         jniTextBtn.setOnClickListener(this);
         jniErrorBtn.setOnClickListener(this);
         jniArrayBtn.setOnClickListener(this);
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         jniCallBackBtn.setOnClickListener(this);
         jniClassInfoBtn.setOnClickListener(this);
         jniPutClassInfoToNativeBtn.setOnClickListener(this);
+        jniListBtn.setOnClickListener(this);
     }
 
     private void initSDK() {
@@ -88,6 +93,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.jni_put_class_info:
                 Human human = new Human();
                 helloJni.putHumanToNative(human);
+                break;
+            case R.id.jni_list:
+                ArrayList<Student> studentList = helloJni.getStudentList();
+                Log.e(TAG, "Native student list is " + studentList.toString());
                 break;
             default:
                 break;

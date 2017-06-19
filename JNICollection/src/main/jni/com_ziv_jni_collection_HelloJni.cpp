@@ -166,7 +166,7 @@ JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_putHumanToNative
     // 获取属性值
     jint age = env->GetIntField(human_obj, age_field);
     jstring name = (jstring) env->GetObjectField(human_obj, name_field);
-    const char *c_name = env->GetStringUTFChars(name, false);
+    const char *c_name = env->GetStringUTFChars(name, JNI_FALSE);
 
     LOGE("Human name is %s, age is %d.", c_name, age);
 
@@ -197,4 +197,32 @@ JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_putHumanToNative
 
         LOGE("Worker type is %s.", c_type);
     }
+}
+
+/*
+ * Class:     com_ziv_jni_collection_HelloJni
+ * Method:    getStudentList
+ * Signature: ()Ljava/util/ArrayList;
+ */
+JNIEXPORT jobject JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentList
+        (JNIEnv *env, jobject obj){
+    jclass list_cls = env->FindClass("java/util/ArrayList");
+    if (list_cls == NULL) {
+        LOGE("List class not fount.");
+        return NULL;
+    }
+    jmethodID list_init = env->GetMethodID(list_cls, "<init>", "()V");
+    jobject list_obj = env->NewObject(list_cls, list_init);
+    // boolean add(Object object);
+    jmethodID list_add = env->GetMethodID(list_cls, "add", "(Ljava/lang/Object;)Z");
+
+    jclass stu_cls = env->FindClass("com/ziv/jni/collection/Student");
+    jmethodID stu_init = env->GetMethodID(stu_cls, "<init>", "(ILjava/lang/String;)V");
+
+    for (int i = 0; i < 3; ++i) {
+        jstring str = env->NewStringUTF("Native");
+        jobject stu_obj = env->NewObject(stu_cls, stu_init, 10, str);
+        env->CallBooleanMethod(list_obj, list_add, stu_obj);
+    }
+    return list_obj;
 }

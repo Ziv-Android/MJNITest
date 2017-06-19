@@ -49,6 +49,14 @@ JNIEXPORT jobject JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentInfo
 JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_putHumanToNative
   (JNIEnv *, jobject, jobject);
 
+/*
+ * Class:     com_ziv_jni_collection_HelloJni
+ * Method:    getStudentList
+ * Signature: ()Ljava/util/ArrayList;
+ */
+JNIEXPORT jobject JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentList
+  (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif
