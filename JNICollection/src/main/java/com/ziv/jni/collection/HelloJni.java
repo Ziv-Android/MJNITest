@@ -33,5 +33,5 @@ public class HelloJni {
 
     public native Student getStudentInfo();
 
-    public native void putHumanToNative();
+    public native void putHumanToNative(Human human);
 }

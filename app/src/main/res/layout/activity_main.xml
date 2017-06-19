@@ -46,4 +46,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="JNI_class_info"/>
+
+    <Button
+        android:id="@+id/jni_put_class_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JNI_put_class_info_to_native"/>
 </LinearLayout>

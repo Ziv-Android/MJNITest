@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ziv.jni.collection.HelloJni;
+import com.ziv.jni.collection.Human;
 import com.ziv.jni.collection.Student;
 import com.ziv.memory.MemoryTestAPI;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button jniInnerClassBtn;
     private Button jniCallBackBtn;
     private Button jniClassInfoBtn;
+    private Button jniPutClassInfoToNativeBtn;
     private MemoryTestAPI memoryTestAPI;
     private HelloJni helloJni;
 
@@ -41,12 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         jniInnerClassBtn = (Button) findViewById(R.id.jni_inner_class);
         jniCallBackBtn = (Button) findViewById(R.id.jni_callback);
         jniClassInfoBtn = (Button) findViewById(R.id.jni_class_info);
+        jniPutClassInfoToNativeBtn = (Button) findViewById(R.id.jni_put_class_info);
         jniTextBtn.setOnClickListener(this);
         jniErrorBtn.setOnClickListener(this);
         jniArrayBtn.setOnClickListener(this);
         jniInnerClassBtn.setOnClickListener(this);
         jniCallBackBtn.setOnClickListener(this);
         jniClassInfoBtn.setOnClickListener(this);
+        jniPutClassInfoToNativeBtn.setOnClickListener(this);
     }
 
     private void initSDK() {
@@ -80,6 +84,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.jni_class_info:
                 Student studentInfo = helloJni.getStudentInfo();
                 Log.e(TAG, "Native student info is " + studentInfo.toString());
+                break;
+            case R.id.jni_put_class_info:
+                Human human = new Human();
+                helloJni.putHumanToNative(human);
                 break;
             default:
                 break;

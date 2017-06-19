@@ -7,13 +7,25 @@ package com.ziv.jni.collection;
  */
 
 public class Human {
-    public String name;
-    public int age;
+    private String name = "Aling";
+    private int age = 23;
+    private Teacher teacher;
+    private Worker worker;
 
     public class Teacher {
-        public String subject;
+        String subject = "Chinese";
     }
     public class Worker {
-        public String type;
+        String type = "coder";
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", teacher=" + teacher.subject +
+                ", worker=" + worker.type +
+                '}';
     }
 }

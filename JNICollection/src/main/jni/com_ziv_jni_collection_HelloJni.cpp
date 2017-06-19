@@ -98,6 +98,7 @@ JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_doCallBack
  */
 #define STUDENT_CLASS "com/ziv/jni/collection/Student"
 #define INIT_WITH_DATA
+
 JNIEXPORT jobject JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentInfo
         (JNIEnv *env, jobject obj) {
     // 关于包描述符理论上, Lcom/ziv/jni/collection/Student; 与 com/ziv/jni/collection/Student 等价
@@ -138,4 +139,62 @@ JNIEXPORT jobject JNICALL Java_com_ziv_jni_collection_HelloJni_getStudentInfo
     env->SetObjectField(stu_obj, field_name, str);
 #endif
     return stu_obj;
+}
+
+/*
+ * Class:     com_ziv_jni_collection_HelloJni
+ * Method:    putHumanToNative
+ * Signature: (Lcom/ziv/jni/collection/Human;)V
+ */
+#define HUMAN_CLASS "com/ziv/jni/collection/Human"
+#define TEACHER_CLASS "com/ziv/jni/collection/Human$Teacher"
+#define WORKER_CLASS "com/ziv/jni/collection/Human$Worker"
+//#define FIND_CLASS
+JNIEXPORT void JNICALL Java_com_ziv_jni_collection_HelloJni_putHumanToNative
+        (JNIEnv *env, jobject obj, jobject human_obj) {
+#ifdef FIND_CLASS
+    jclass human_cls = env->FindClass(HUMAN_CLASS);
+#else
+    jclass human_cls = env->GetObjectClass(human_obj);
+#endif
+    if (human_cls == NULL) {
+        LOGE("Get human class failed.");
+        return;
+    }
+    jfieldID name_field = env->GetFieldID(human_cls, "name", "Ljava/lang/String;");
+    jfieldID age_field = env->GetFieldID(human_cls, "age", "I");
+    // 获取属性值
+    jint age = env->GetIntField(human_obj, age_field);
+    jstring name = (jstring) env->GetObjectField(human_obj, name_field);
+    const char *c_name = env->GetStringUTFChars(name, false);
+
+    LOGE("Human name is %s, age is %d.", c_name, age);
+
+    jclass teacher_cls = env->FindClass(TEACHER_CLASS);
+    if (teacher_cls == NULL) {
+        LOGE("Get teacher class failed.");
+    } else {
+        jmethodID teacher_init = env->GetMethodID(teacher_cls, "<init>", "(Lcom/ziv/jni/collection/Human;)V");
+        if (teacher_init == NULL) {
+            LOGE("Get teacher_init method failed.");
+        }
+        jobject teacher_obj = env->NewObject(teacher_cls, teacher_init, NULL);
+        jfieldID subject_field = env->GetFieldID(teacher_cls, "subject", "Ljava/lang/String;");
+        jstring subject = (jstring) env->GetObjectField(teacher_obj, subject_field);
+        const char *c_subject = env->GetStringUTFChars(subject, false);
+
+        LOGE("Teacher subject is %s.", c_subject);
+    }
+    jclass worker_cls = env->FindClass(WORKER_CLASS);
+    if (worker_cls == NULL) {
+        LOGE("Get worker class failed.");
+    } else {
+        jmethodID worker_init = env->GetMethodID(worker_cls, "<init>", "(Lcom/ziv/jni/collection/Human;)V");
+        jobject worker_obj = env->NewObject(worker_cls, worker_init, NULL);
+        jfieldID type_field = env->GetFieldID(worker_cls, "type", "Ljava/lang/String;");
+        jstring type = (jstring) env->GetObjectField(worker_obj, type_field);
+        const char *c_type = env->GetStringUTFChars(type, false);
+
+        LOGE("Worker type is %s.", c_type);
+    }
 }
