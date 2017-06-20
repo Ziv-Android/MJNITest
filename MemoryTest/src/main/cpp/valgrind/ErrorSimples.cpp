@@ -47,6 +47,7 @@ void memoryDoubleFree() {
             LOGE("--> memoryDoubleFree p is %d.", p);
         }
     }
+    /********/
     char *q = new char[100];
     delete []q;
     delete []q;

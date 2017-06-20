@@ -1,1 +1,1 @@
-include ':app', ':JNA', ':CommonUtils', ':JNILog', ':JNICollection', ':MemoryTest'
+include ':app', ':JNA', ':CommonUtils', ':JNILog', ':JNICollection', ':MemoryTest', ':Thread'
