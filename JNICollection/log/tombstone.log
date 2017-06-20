@@ -1,0 +1,55 @@
+06-20 19:28:15.374 31574-31574/? A/DEBUG: *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+06-20 19:28:15.374 31574-31574/? A/DEBUG: Build fingerprint: 'google/shamu/shamu:7.0/NBD90Z/3264873:user/release-keys'
+06-20 19:28:15.374 31574-31574/? A/DEBUG: Revision: '0'
+06-20 19:28:15.374 31574-31574/? A/DEBUG: ABI: 'arm'
+06-20 19:28:15.374 31574-31574/? A/DEBUG: pid: 30400, tid: 30400, name: com.ziv.jnitest  >>> com.ziv.jnitest <<<
+06-20 19:28:15.375 31574-31574/? A/DEBUG: signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x3f
+06-20 19:28:15.375 31574-31574/? A/DEBUG:     r0 0000003f  r1 0000003f  r2 00000053  r3 00000001
+06-20 19:28:15.375 31574-31574/? A/DEBUG:     r4 ffffffff  r5 00000000  r6 00000000  r7 00000003
+06-20 19:28:15.375 31574-31574/? A/DEBUG:     r8 ffffffff  r9 0000001a  sl a7c44ad2  fp bee1a100
+06-20 19:28:15.375 31574-31574/? A/DEBUG:     ip 80000000  sp bee19f00  lr af610b2d  pc af5d9836  cpsr 800b0030
+06-20 19:28:15.783 31574-31574/? A/DEBUG: backtrace:
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #00 pc 00018836  /system/lib/libc.so (strlen+21)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #01 pc 0004fb29  /system/lib/libc.so (__strlen_chk+4)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #02 pc 000401b9  /system/lib/libc.so (__vfprintf+4552)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #03 pc 00044ddf  /system/lib/libc.so (vsnprintf+134)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #04 pc 00005523  /system/lib/liblog.so (__android_log_print+54)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #05 pc 00000a3b  /data/app/com.ziv.jnitest-2/lib/arm/libjni-collection.so (Java_com_ziv_jni_collection_HelloJni_00024Name_setNewName+122)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #06 pc 000ad919  /system/lib/libart.so (art_quick_generic_jni_trampoline+40)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #07 pc 000a8f41  /system/lib/libart.so (art_quick_invoke_stub_internal+64)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #08 pc 004028c1  /system/lib/libart.so (art_quick_invoke_stub+232)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #09 pc 000b01f1  /system/lib/libart.so (_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc+136)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #10 pc 001eba07  /system/lib/libart.so (_ZN3art11interpreter34ArtInterpreterToCompiledCodeBridgeEPNS_6ThreadEPNS_9ArtMethodEPKNS_7DexFile8CodeItemEPNS_11ShadowFrameEPNS_6JValueE+198)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #11 pc 001e5fcf  /system/lib/libart.so (_ZN3art11interpreter6DoCallILb0ELb0EEEbPNS_9ArtMethodEPNS_6ThreadERNS_11ShadowFrameEPKNS_11InstructionEtPNS_6JValueE+478)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #12 pc 003fa2ef  /system/lib/libart.so (MterpInvokeVirtual+422)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #13 pc 0009bd94  /system/lib/libart.so (ExecuteMterpImpl+14228)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #14 pc 001c9d3b  /system/lib/libart.so (_ZN3art11interpreterL7ExecuteEPNS_6ThreadEPKNS_7DexFile8CodeItemERNS_11ShadowFrameENS_6JValueEb+290)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #15 pc 001ce805  /system/lib/libart.so (_ZN3art11interpreter30EnterInterpreterFromEntryPointEPNS_6ThreadEPKNS_7DexFile8CodeItemEPNS_11ShadowFrameE+92)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #16 pc 003f1dc9  /system/lib/libart.so (artQuickToInterpreterBridge+716)
+06-20 19:28:15.783 31574-31574/? A/DEBUG:     #17 pc 000ad993  /system/lib/libart.so (art_quick_to_interpreter_bridge+34)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #18 pc 01d8939d  /system/framework/arm/boot-framework.oat (offset 0x1540000) (android.view.View.performClick+72)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #19 pc 01dfb67d  /system/framework/arm/boot-framework.oat (offset 0x1540000) (android.view.View$PerformClick.run+40)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #20 pc 015b2bf1  /system/framework/arm/boot-framework.oat (offset 0x1540000) (android.os.Handler.handleCallback+44)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #21 pc 015b2c53  /system/framework/arm/boot-framework.oat (offset 0x1540000) (android.os.Handler.dispatchMessage+54)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #22 pc 01b4cd0d  /system/framework/arm/boot-framework.oat (offset 0x1540000) (android.os.Looper.loop+696)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #23 pc 015c3dff  /system/framework/arm/boot-framework.oat (offset 0x1540000) (android.app.ActivityThread.main+426)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #24 pc 000a8f41  /system/lib/libart.so (art_quick_invoke_stub_internal+64)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #25 pc 004029c9  /system/lib/libart.so (art_quick_invoke_static_stub+228)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #26 pc 000b021b  /system/lib/libart.so (_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc+178)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #27 pc 00313427  /system/lib/libart.so (_ZN3artL18InvokeWithArgArrayERKNS_33ScopedObjectAccessAlreadyRunnableEPNS_9ArtMethodEPNS_8ArgArrayEPNS_6JValueEPKc+58)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #28 pc 0031479b  /system/lib/libart.so (_ZN3art12InvokeMethodERKNS_33ScopedObjectAccessAlreadyRunnableEP8_jobjectS4_S4_j+766)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #29 pc 002bbccd  /system/lib/libart.so (_ZN3artL13Method_invokeEP7_JNIEnvP8_jobjectS3_S3_+40)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #30 pc 00603f39  /system/framework/arm/boot.oat (offset 0x56d000) (java.lang.reflect.Method.invoke+116)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #31 pc 02033189  /system/framework/arm/boot-framework.oat (offset 0x1540000) (com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run+100)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #32 pc 02034005  /system/framework/arm/boot-framework.oat (offset 0x1540000) (com.android.internal.os.ZygoteInit.main+1216)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #33 pc 000a8f41  /system/lib/libart.so (art_quick_invoke_stub_internal+64)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #34 pc 004029c9  /system/lib/libart.so (art_quick_invoke_static_stub+228)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #35 pc 000b021b  /system/lib/libart.so (_ZN3art9ArtMethod6InvokeEPNS_6ThreadEPjjPNS_6JValueEPKc+178)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #36 pc 00313427  /system/lib/libart.so (_ZN3artL18InvokeWithArgArrayERKNS_33ScopedObjectAccessAlreadyRunnableEPNS_9ArtMethodEPNS_8ArgArrayEPNS_6JValueEPKc+58)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #37 pc 00313237  /system/lib/libart.so (_ZN3art17InvokeWithVarArgsERKNS_33ScopedObjectAccessAlreadyRunnableEP8_jobjectP10_jmethodIDSt9__va_list+266)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #38 pc 002764d3  /system/lib/libart.so (_ZN3art3JNI21CallStaticVoidMethodVEP7_JNIEnvP7_jclassP10_jmethodIDSt9__va_list+426)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #39 pc 00064f7d  /system/lib/libandroid_runtime.so
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #40 pc 0006684b  /system/lib/libandroid_runtime.so (_ZN7android14AndroidRuntime5startEPKcRKNS_6VectorINS_7String8EEEb+498)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #41 pc 00001945  /system/bin/app_process32
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #42 pc 00016c41  /system/lib/libc.so (__libc_init+48)
+06-20 19:28:15.784 31574-31574/? A/DEBUG:     #43 pc 00001564  /system/bin/app_process32
